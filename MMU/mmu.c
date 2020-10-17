@@ -60,7 +60,7 @@ void hash_insere(THash *H, int novo){
         }
         pont->prox = aux;
     }
-    printf("Inserido endereço " AZ "0x%X " RESET "na posição " AZ "0x%X" RESET " de memória virtual\n",novo,idx);
+    printf("Inserido endereço 0x%X na posição 0x%X de memória virtual\n",novo,idx);
 }
   
 /* Busca um item pela sua chave na hash */
@@ -139,7 +139,7 @@ void mmu(THash *H){
         else addr = hash_busca(H->indx[idx],CPU_request);
 
         if(addr == NULL){
-            printf("Page Miss:" AZ " 0x%X\n" RESET,CPU_request);
+            printf("Page Miss: 0x%X\n",CPU_request);
             miss++;
         }else{
             printf("Endereço: 0x%X  Indice: 0x%X  Modificado: ",addr->chave,idx);
