@@ -3,9 +3,9 @@
 #define RESET "\e[0m"    // Texto padrão
 #define True 1
 #define False 0
-#define HASH_TAM 65536 // 2^28 / 2^12
+#define HASH_TAM 65530 // 2^28 / 2^12
 #define MEM_FISICA 268435456 // 2^28
-#define MAX_COLI 2
+#define MEM_VIRTUAL 536870912 // 2^29
 
 typedef int Boolean;
  
@@ -15,7 +15,10 @@ typedef struct THash{
 }THash;
  
 typedef struct HItem{
-    int chave;
+    int virt_addr;
+    int moldura;
+    int pagina;
+    int fis_addr;
     Boolean modificado;
     struct HItem *prox;
 }HItem;
@@ -24,19 +27,19 @@ Boolean init = True;
 int coli_cont = 0;
  
 /* Calcula a função de hash */
-int hash_func(int chave);
+int hash_func(int addr);
  
 /* Cria novo tipo item para ser inserido na hash */
-HItem* hash_novo(int chave);
+HItem* hash_novo(int addr);
 
 /* Insere novo item na hash */
 void hash_insere(THash *H, int novo);
   
-/* Busca um item pela sua chave na hash */
-HItem* hash_busca(HItem *ini, int chave);
+/* Busca um item pela sua addr na hash */
+HItem* hash_busca(HItem *ini, int addr);
  
 /* Remove item na hash */
-Boolean hash_remove(THash *H, int chave);
+Boolean hash_remove(THash *H, int addr);
  
 /* Inicializa a tabela hash */
 void hash_ini(THash *H);
