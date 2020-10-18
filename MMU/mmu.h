@@ -1,6 +1,3 @@
-#define AMAR "\e[0;33m"  // Texto normal amarelo
-#define AZ "\e[0;34m"    // Texto normal azul
-#define RESET "\e[0m"    // Texto padrão
 #define True 1
 #define False 0
 #define HASH_TAM 65530 // 2^28 / 2^12
@@ -19,7 +16,6 @@ typedef struct HItem{
     int moldura;
     int pagina;
     int fis_addr;
-    Boolean modificado;
     struct HItem *prox;
 }HItem;
 
